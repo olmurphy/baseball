@@ -1,0 +1,7 @@
+Notes about ER:
+	(1) all "ID's" under the original database have been changed to "<table_name>_ID" to satisfy the unique names
+	(2) tables awardsplayers and awardsmanagers were combined into "awards"
+	(3) tables awardsshareplayers and awardssharemanagers were combined into "awardsshare"
+	(4) the Batting and batting post have been combined to allow for "stint" and "round". However, the option of doing each one as a table was followed due to trouble with pythong program to insert data into the table
+	(5) Same as (4) in regards to the Pitching and Pichting post
+	(6) the attributes such as HR, H, etc. are shared among batting and pitching. Each shared attribute that was not the same was given a new name as "<table_name>_HR", "<table_name>_H", etc. in the create table statements, NOT reflected in the ER diagram.

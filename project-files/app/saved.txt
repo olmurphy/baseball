@@ -1,0 +1,29 @@
+try:
+    cur = con.cursor()
+    sql = "select nameFirst, nameLast from people where playerid = %s"
+    cur.execute(sql, playerid)
+    results = cur.fetchall()
+
+    if cur.rowcount == 0:
+        return None
+
+    # setting name, birth and death year (if not alive)
+    player.setFirst(results[0][0])
+    player.setLast(results[0][1])
+
+    # getting batting statistics
+    sql = "select * from batting where playerid = %s"
+    cur.execute(sql,playerid)
+
+    results = cur.fetchall()
+    if cur.rowcount != 0:
+        sql = "show columns from batting"
+        cur.execute(sql)
+        attributes = cur.fetchall()
+        popTable(attributes, results, player, 0)
+
+except Exception:
+    print("Database exception.")
+    raise
+finally:
+    con.close()

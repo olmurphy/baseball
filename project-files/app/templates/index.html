@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, User!</h1>
+    <h2>What is this?</h2>
+    <p>This is a web page for you to look up baseball statistics of all professional baseball players. Need to learn how to use it, keep reading. Otherwise, click <a href="{{ url_for('player') }}">here</a> to get started.</p>
+    <h2>How do I use it?</h2>
+    <p>To search, you simply type in the <a href="#playerid">playerid</a> of the professional baseball player you want to search.
+    A comprehensive list of all baseball playerid's can be found <a href="{{ url_for('playerid') }}">here</a>.</p>
+    <h2 id="playerid">What is a playerid?</h2>
+    <p>A playerid is simply a unique id to identify each professional baseball player.</p>
+    <h2>Where is the data from?</h2>
+    <p>We are using data provided by <a href="http://www.seanlahman.com/baseball-archive/statistics/">Sean Lahman</a> and the likes.
+    Thanks to Sean and all his contributors.</p>
+{% endblock %}

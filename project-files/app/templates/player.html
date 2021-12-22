@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+    {% block content %}
+    <p>This is where you are able to find a professional baseball player's batting statistics.
+        Below this message you will find a search bar for you to enter in a baseball player's playerid.
+        If you do not know the playerid of the player you are looking for then click <a href="{{ url_for('playerid') }}">here</a> to find it.
+    </p>
+    <style>
+        form {
+            text-align:center;
+        }
+    </style>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.playerid.label }}
+            {{ form.playerid(size=15) }}<br>
+            {% for error in form.playerid.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+
+    <div class="">
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-algin: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+        <h1 style="text-align:center">{{name}}</h1>
+
+        <h2>Batting Statistics</h2>
+
+        <table>
+            <tr>
+                {% for head in headers %}
+                <th>{{head}}</th>
+                {% endfor %}
+            </tr>
+
+            {% for row in data %}
+            <tr>
+                {% for col in row %}
+                <td>{{col}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+    <h2 style="text-align:center;color:red">{{notFound}}</h2>
+
+{% endblock %}
